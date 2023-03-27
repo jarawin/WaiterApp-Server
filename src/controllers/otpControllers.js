@@ -45,7 +45,7 @@ const confirmOTP = async (req, res) => {
       const newUser = {
         userId: uuidv4(),
         phone,
-        lastSentOTP: new Date(),
+        point: 0,
       };
       await insertOne("users", newUser);
       return res.status(200).json({
@@ -183,7 +183,11 @@ const requestOTP = async (req, res) => {
       //     ? "---> del data otp success."
       //     : "---> del data otp failed."
       // );
+      // return res
+      //   .status(400)
+      //   .json({ hasSentOTP: false, message: "request otp failed. 2" });
 
+      //! FOR MOCKUP OTP
       console.log(" ==== THIS IS MOCKUP OTP ==== ");
       console.log("OTP: ", otp);
       console.log("REF: ", ref);
@@ -196,10 +200,6 @@ const requestOTP = async (req, res) => {
           message: "request otp success.",
         })
         .status(200);
-
-      return res
-        .status(400)
-        .json({ hasSentOTP: false, message: "request otp failed. 2" });
     } else {
       console.log("---> send sms success.");
 

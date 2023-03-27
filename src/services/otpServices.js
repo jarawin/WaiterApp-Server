@@ -3,6 +3,9 @@ dotenv.config();
 
 const BASE_URL = "https://api-v2.thaibulksms.com/sms";
 
+const SMS_KEY = "ChOLs87aU7iVJpnohscBvpIlRP9UdK";
+const SMS_SECRET = "vB4AJmVf-Cnno72HO6G9ms7GZ7rMQI";
+
 // export const requestOTP = async (msisdn) => {
 //   const payload = `key=${process.env.SMS_KEY}&secret=${process.env.SMS_SECRET}&msisdn=${msisdn}`;
 //   const headers = {
@@ -34,7 +37,10 @@ import api from "api";
 const sdk = api("@thaibulksms/v1.0#5alni1epl6dge9p1");
 
 export const sendSMS = async (msisdn, message) => {
-  sdk.auth(process.env.SMS_KEY, process.env.SMS_SECRET);
+  sdk.auth(
+    process.env.SMS_KEY || SMS_KEY,
+    process.env.SMS_SECRET || SMS_SECRET
+  );
 
   try {
     const response = await sdk.postSms(

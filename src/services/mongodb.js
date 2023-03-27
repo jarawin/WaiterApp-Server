@@ -2,7 +2,12 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 
-const client = new MongoClient(process.env.DB_CONNECTION_STR);
+const DB_CONNECTION_STR =
+  "mongodb+srv://jarawin:1234@cluster0.noozj1w.mongodb.net/?retryWrites=true&w=majority";
+
+const client = new MongoClient(
+  process.env.DB_CONNECTION_STR || DB_CONNECTION_STR
+);
 
 export async function insertOne(coll, doc) {
   try {

@@ -4,10 +4,12 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import line, { Client } from "@line/bot-sdk";
 
+const LINE_CHANNEL_SECRET = "589e1b6501a00711d18899c36eec1120";
+
 const config = {
   channelAccessToken:
     "dljKvlI/jiuRbHjMspYBBJ9GRETmA+QCbh2R8pjjqDw/8uaL4xuZN+IWNFujdYwCysO2DVSwiFoDfHMPa2Xwx0NfU8I/l0xHiCwbhZTlZnuHsd+3cNfKgDn61KDBg0VGsV5byrEDhj+5RNN3XR2c1QdB04t89/1O/w1cDnyilFU=",
-  channelSecret: process.env.LINE_CHANNEL_SECRET,
+  channelSecret: process.env.LINE_CHANNEL_SECRET || LINE_CHANNEL_SECRET,
 };
 
 const client = new Client(config);
